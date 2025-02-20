@@ -1,0 +1,28 @@
+CREATE DATABASE DBAPI;
+
+USE DBAPI;
+
+CREATE TABLE CATEGORIA (
+ idCategoria int primary key identity(1,1),
+ descripcion varchar(50)
+)
+
+CREATE TABLE PRODUCTO (
+idProducto int primary key identity(1,1),
+codigoBarra varchar(20),
+descripcion varchar(50),
+marca varchar(50),
+idCategoria int,
+precio decimal(10,2),
+CONSTRAINT FK_IDCATEGORIA FOREIGN KEY (idCategoria) REFERENCES CATEGORIA(idCategoria)
+)
+
+insert into CATEGORIA(descripcion) values ('tech'), ('electroHogar'), ('accesorios')
+
+insert into PRODUCTO (codigoBarra, descripcion, marca, idCategoria, precio) values 
+('50910010', 'monitor aoc', 'aoc', 1, 1200), ('50910012', 'Lavadora', 'LG', 2, 1749)
+
+
+SELECT * FROM CATEGORIA
+
+SELECT * FROM PRODUCTO
